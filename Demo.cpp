@@ -38,6 +38,7 @@ int main() {
 
   Matrix b{arr, 3, 3};
   a *= -3;
+  //Matrix c = a*b;
   cout << (a+b) << endl;  // prints the 0 matrix
   cout << (b-a) << endl;
   /* prints [6 0 0]
