@@ -7,6 +7,20 @@ using namespace zich;
 
 using namespace std;
 
+TEST_CASE("Matrix constructor"){
+    vector<double> arr_a = {1, 2, 3, 4};
+    vector<double> arr_b = {1, 2, 3, 4};
+    vector<double> arr_c = {1, 2, 3, 5, 7, 6};
+    vector<double> result = {2, 4, 6, 8};
+
+    CHECK_NOTHROW(Matrix(arr_a,2,2));
+    CHECK_NOTHROW(Matrix(arr_b,2,2));
+    CHECK_THROWS(Matrix(arr_c,2,2));
+    CHECK_THROWS(Matrix(arr_a,2,1));
+    CHECK_NOTHROW(Matrix(arr_b,2,3));
+
+
+}
 
 TEST_CASE("math operators && increasment, decreasment")
 {
@@ -24,6 +38,7 @@ TEST_CASE("math operators && increasment, decreasment")
     CHECK_EQ((a + b),res);
     CHECK_FALSE((a - b) == res);
     CHECK_NE(-a, a);
+    CHECK_EQ(a, b);
     CHECK_NOTHROW(a += 3);
     CHECK_NOTHROW(b -= b);
     CHECK_NE(-a, -b);
@@ -32,7 +47,6 @@ TEST_CASE("math operators && increasment, decreasment")
     CHECK_EQ(++a, ++b);
     CHECK_EQ(--a, --b);
     CHECK_THROWS(a-c);
-    CHECK_THROWS(a*c);
     CHECK_THROWS(c-b);
 
 
@@ -56,13 +70,16 @@ TEST_CASE("multiplications & compartions operators ")
     CHECK_NE(a * c, c);
     CHECK_NOTHROW(3 * b);
     CHECK_NOTHROW(0.5 * b);
+    CHECK_NE(3 * a, a);
     CHECK_NOTHROW(b*= 3);
+    CHECK_THROWS(a*c);
     CHECK_NE((a > b), true);
     CHECK_EQ((a <= b), true);
     CHECK_EQ(a < c, true);
-    CHECK_NE(3 * a, a);
     CHECK_NE((a*b)<=c, true);
     CHECK_EQ(a<(4*c), true);
+    CHECK_EQ(a > c, false);
+    
     
 
 

@@ -19,21 +19,9 @@ namespace zich
         Matrix(){};
         
 
-        Matrix(vector<double> arr, unsigned int col, unsigned int row)
-        {
-            vector<vector<double>> matrix(row, vector<double>(col));
-            for (size_t i = 0; i < row; i++)
-            {
-                for (size_t j = 0; i < col; i++)
-                {
-                    matrix[i][j] = arr[i * col + j];
-                }
-            }
-        }
+        Matrix(vector<double> arr, unsigned int col, unsigned int row){}
+    
         
-       
-
-        //
         friend ostream &operator<<(ostream &a, const Matrix &b);
         friend istream &operator>>(istream &a, Matrix &b);
 
@@ -60,7 +48,7 @@ namespace zich
 
         // increcment decrecment
         Matrix operator++(int); // postfix
-        Matrix &operator++();                             // prefix
+        Matrix &operator++();   // prefix
         Matrix operator--(int); // postfix
         Matrix &operator--();  // postfix
         
